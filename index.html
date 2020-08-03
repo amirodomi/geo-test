@@ -26,7 +26,7 @@ function locationSuccess(position) {
         var speed = position.coords.speed;
         var timestamp = position.timestamp;
         document.getElementById("dem").innerHTML = "Latitude: " + position.coords.latitude +
-                "<br>Longitude: " + position.coords.longitude +"<br>"+altitude+"<br>"+accuracy+"<br>"+altitudeAccuracy+"<br>"+heading+"<br>"+speed+"<br>"+timestamp;
+                "<br>Longitude: " + position.coords.longitude +"<br>altitude: "+altitude+"<br>accuracy: "+accuracy+"<br>altitudeAccuracy: "+altitudeAccuracy+"<br>heading: "+heading+"<br>speed: "+speed+"<br>timestamp: "+timestamp;
 
         document.getElementById("myAnchor").href = "https://www.google.com/maps/@" + position.coords.latitude + "," + position.coords.longitude + ",30z";
 
