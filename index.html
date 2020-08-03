@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+<body>
+
+    <p>Click the button to get your coordinates.</p>
+
+    <button onclick="getLocation()">Try It</button>
+
+    <p id="demo"></p>
+    <hr>
+    <p id="dem"></p>
+
+    <p><a id="myAnchor" href="">test</a></p>
+
+    <script type="text/JavaScript">
+
+function locationSuccess(position) {
+        var latitude = position.coords.latitude;
+        var longitude = position.coords.longitude;
+        var altitude = position.coords.altitude;
+        var accuracy = position.coords.accuracy;
+        var altitudeAccuracy = position.coords.altitudeAccuracy;
+        var heading = position.coords.height;
+        var speed = position.coords.speed;
+        var timestamp = position.timestamp;
+        document.getElementById("dem").innerHTML = "Latitude: " + position.coords.latitude +
+                "<br>Longitude: " + position.coords.longitude;
+        // work with this information however you'd like!
+    }
+
+    function locationError(error) {
+        var code = error.code;
+        var message = error.message;
+
+        // read the code and message and decide how you want to handle this!
+    }
+
+    navigator.geolocation.getCurrentPosition(locationSuccess, locationError);
+
+        var x = document.getElementById("demo");
+        var y;
+
+        function getLocation() {
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(showPosition);
+            } else {
+                x.innerHTML = "Geolocation is not supported by this browser.";
+            }
+        }
+
+        function showPosition(position) {
+            x.innerHTML = "Latitude: " + position.coords.latitude +
+                "<br>Longitude: " + position.coords.longitude;
+            y = "https://www.google.com/maps/@" + position.coords.latitude + "," + position.coords.longitude + ",30z";
+            document.getElementById("myAnchor").href = y;
+
+        }
+    </script>
+
+</body>
+
+</html>
